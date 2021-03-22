@@ -7,7 +7,7 @@ public class Main {
         System.out.println(kaartidePakk);
         Käsi minuKäsi = new Käsi();
         Laud mänguLaud = new Laud();
-
+        Kaart kaart = new Kaart();
         while(true) {
             minuKäsi.käiKaart(mänguLaud, kaart);
         }

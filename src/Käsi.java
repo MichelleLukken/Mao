@@ -4,6 +4,10 @@ public class Käsi {
 
     private ArrayList<Kaart> käes;
 
+    public Käsi() {
+        this.käes = käes;
+    }
+
     public boolean võtaKaart(Kaardipakk kaardipakk){
         kaardipakk.suvalineKaart();
         käes.add(kaardipakk.suvalineKaart());
@@ -12,10 +16,7 @@ public class Käsi {
     }
     public void käiKaart(Laud laud, Kaart a){
         if (laud.saabKäia(a) == 1){
-
-            int ID = a.getID();
-            if (käes.contains(Kaart()))
-            käes.remove(Kaart(ID));
+            this.käes.remove(a);
         }
         else if (laud.saabKäia(a) == 0){
             System.out.println("vale käik");
