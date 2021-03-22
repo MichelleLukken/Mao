@@ -3,6 +3,7 @@ public class Kaart {
     private String number;
     private int ID;
 
+
     @Override
     public String toString() {
         return "Kaart{" +
@@ -10,6 +11,10 @@ public class Kaart {
                 ", number='" + number + '\'' +
                 ", ID=" + ID +
                 '}';
+    }
+
+    public Kaart(int ID){
+        this.ID = ID;
     }
 
     public Kaart(String mast, String number, int ID) {

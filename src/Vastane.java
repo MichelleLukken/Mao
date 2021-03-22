@@ -1,2 +1,2 @@
-public class Vastane {
+public class Vastane extends Käsi{
 }

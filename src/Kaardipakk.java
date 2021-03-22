@@ -32,5 +32,14 @@ public class Kaardipakk {
                 '}';
     }
 
-
+    public Kaart suvalineKaart(){
+        int a =  (int)Math.round(Math.random()* 51);
+        for (int i=1; i<pakk.size(); i++){
+            Kaart kaart = pakk.get(i);
+            if (kaart.getID() == a){
+                return kaart;
+            }
+        }
+        return suvalineKaart();
+    }
 }
