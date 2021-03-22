@@ -12,7 +12,10 @@ public class Käsi {
     }
     public void käiKaart(Laud laud, Kaart a){
         if (laud.saabKäia(a) == 1){
-            käes.remove(new Kaart(a));
+
+            int ID = a.getID();
+            if (käes.contains(Kaart()))
+            käes.remove(Kaart(ID));
         }
         else if (laud.saabKäia(a) == 0){
             System.out.println("vale käik");
