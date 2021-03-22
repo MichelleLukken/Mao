@@ -5,7 +5,12 @@ public class Main {
         Kaardipakk kaartidePakk = new Kaardipakk();
         kaartidePakk.kaartideTegemine();
         System.out.println(kaartidePakk);
+        Käsi minuKäsi = new Käsi();
+        Laud mänguLaud = new Laud();
 
+        while(true) {
+            minuKäsi.käiKaart(mänguLaud, kaart);
+        }
         //System.out.println(Arrays.toString(new Kaardipakk[]{kaartidePakk}));
     }
 }
