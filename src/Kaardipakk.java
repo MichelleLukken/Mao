@@ -22,7 +22,6 @@ public class Kaardipakk {
         }
     }
 
-
     public ArrayList<Kaart> getPakk(int i) {
         return pakk;
     }
