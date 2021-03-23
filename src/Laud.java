@@ -6,7 +6,9 @@ public class Laud {
 
     public void setViimaneKaart(Kaart viimaneKaart) {
         this.viimaneKaart = viimaneKaart;
+
     }
+
 
     public int saabKäia(Kaart a){ //mis kaarte saab järgmisena lauale käia
 
