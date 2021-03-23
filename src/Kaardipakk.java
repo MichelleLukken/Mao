@@ -13,10 +13,9 @@ public class Kaardipakk {
     public void kaartideTegemine(){
         String[] mastid = {"ärtu", "ruutu", "risti", "potti"};
         String[] numbrid = {"äss", "2", "3", "4", "5", "6", "7", "8", "9", "10", "poiss", "emand", "kuninags"};
-        int id = 0;
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 13; j++, id++){
-                Kaart a = new Kaart(mastid[i], numbrid[j], id);
+            for (int j = 0; j < 13; j++){
+                Kaart a = new Kaart(mastid[i], numbrid[j]);
                 pakk.add(a);
             }
         }
@@ -39,11 +38,13 @@ public class Kaardipakk {
         return tagastatav;
     }
 
-    public void mänguAlustamine(Käsi käsi, Vastane vastane, Kaardipakk kaardipakk){
+    public void mänguAlustamine(Käsi käsi, Vastane vastane, Kaardipakk kaardipakk, Laud laud){
         for (int i = 0, j = 51; i < 5; i++, j--) {
             käsi.võtaKaart(kaardipakk);
             vastane.võtaKaart(kaardipakk);
         }
+        Kaart a = suvalineKaart();
+        laud.setViimaneKaart(a);
     }
 
 }
