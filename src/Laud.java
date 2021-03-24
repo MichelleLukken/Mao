@@ -9,6 +9,13 @@ public class Laud {
 
     }
 
+    public Kaart getViimaneKaart() {
+        return viimaneKaart;
+    }
+
+    public ArrayList<Kaart> getKaardidLaual() {
+        return kaardidLaual;
+    }
 
     public int saabKäia(Kaart a){ //mis kaarte saab järgmisena lauale käia
 
