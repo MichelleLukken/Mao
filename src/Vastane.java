@@ -12,14 +12,29 @@ public class Vastane extends Käsi{
     public Vastane() {
     }
 
+    public boolean võtaKaart(Kaardipakk kaardipakk){
+        vastases.add(kaardipakk.suvalineKaart());
+        return true;
+    }
+
+    public void käiKaart(Laud laud, Kaart a){
+        if (laud.saabKäia(a) == 1){
+            this.vastases.remove(a);
+        }
+        else if (laud.saabKäia(a) == 0){
+            System.out.println("vale käik");
+        }
+    }
+
     public void vastaseKäik (Kaardipakk kaardipakk, Laud laud){
         Kaart viimane = laud.getViimaneKaart();
+
         boolean poolean= false;
         for (int i = 0; i < vastases.size(); i++) {
             if (viimane.getMast().equals(vastases.get(i).getMast()) || viimane.getNumber().equals(vastases.get(i).getNumber())){
                 käiKaart(laud, vastases.get(i));
-                System.out.println(vastases.get(i));
                 poolean = true;
+                break;
             }
         }
         if(!poolean){
@@ -29,6 +44,6 @@ public class Vastane extends Käsi{
 
     @Override
     public String toString() {
-        return "Vastane" + getKäes();
+        return "Vastane" + vastases;
     }
 }

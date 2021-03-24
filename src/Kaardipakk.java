@@ -45,6 +45,8 @@ public class Kaardipakk {
         }
         Kaart a = suvalineKaart();
         laud.setViimaneKaart(a);
+        System.out.println(käsi);
+        System.out.println(vastane);
     }
 
 }
