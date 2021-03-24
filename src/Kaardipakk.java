@@ -11,7 +11,7 @@ public class Kaardipakk {
 
 
     public void kaartideTegemine(){
-        String[] mastid = {"ärtu", "ruutu", "risti", "potti"};
+        String[] mastid = {"ärtu", "ruutu", "risti", "poti"};
         String[] numbrid = {"äss", "2", "3", "4", "5", "6", "7", "8", "9", "10", "poiss", "emand", "kuninags"};
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 13; j++){
