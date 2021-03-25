@@ -20,15 +20,13 @@ public class Kaardipakk {
         }
     }
 
-    public ArrayList<Kaart> getPakk(int i) {
+    public ArrayList<Kaart> getPakk() {
         return pakk;
     }
 
     @Override
     public String toString() {
-        return "Kaardipakk{" +
-                "pakk=" + pakk +
-                '}';
+        return "Kaardipakk : " + pakk;
     }
     public Kaart suvalineKaart(){ //Leiab kaardipakist suvalise kaardi.
         int a =  (int)Math.round(Math.random()* (pakk.size()-1));
@@ -45,8 +43,7 @@ public class Kaardipakk {
         }
         Kaart a = suvalineKaart();
         laud.setViimaneKaart(a); //Lauale panneks üks suvaline kaart.
-        System.out.println(käsi);
-        System.out.println(vastane);
     }
 
 }
+
