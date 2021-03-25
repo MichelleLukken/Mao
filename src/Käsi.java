@@ -2,19 +2,19 @@ import java.util.ArrayList;
 
 public class Käsi {
 
-    private ArrayList<Kaart> käes = new ArrayList<>();
+    private ArrayList<Kaart> käes = new ArrayList<>(); //Kaardid, mis on kasutajal hetkel käes.
 
     public boolean võtaKaart(Kaardipakk kaardipakk){
-        käes.add(kaardipakk.suvalineKaart());
+        käes.add(kaardipakk.suvalineKaart()); //Võetakse suvaline kaart ja asetatakse kasutaja kätte.
         return true;
 
     }
     public void käiKaart(Laud laud, Kaart a){
         if (laud.saabKäia(a) == 1){
-            this.käes.remove(a);
+            this.käes.remove(a); //Kui saab kaarti käia, siis eemaldatakse see kaart käest.
         }
         else if (laud.saabKäia(a) == 0){
-            System.out.println("vale käik");
+            System.out.println("Vale käik"); //Kui ei saa käia, siis öeldaks "Vale käik".
         }
     }
 
@@ -32,6 +32,6 @@ public class Käsi {
 
     @Override
     public String toString() {
-        return "Käsi" + käes;
+        return "Sinu kaardid: " + käes;
     }
 }

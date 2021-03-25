@@ -1,6 +1,7 @@
+
 public class Kaart {
-    private String mast;
-    private String number;
+    private String mast;  //Määrab kaardi masti
+    private String number;  //Määrab kaardi numbri või 'tähe'.
 
 
     @Override
@@ -11,11 +12,12 @@ public class Kaart {
                 '}';
     }
 
-    public Kaart(String mast, String number) {
+    public Kaart(String mast, String number) {  //Konstruktor
         this.mast = mast;
         this.number = number;
     }
 
+    //Get- ja set-meetodid
     public String getMast() {
         return mast;
     }
