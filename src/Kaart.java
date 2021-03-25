@@ -6,10 +6,7 @@ public class Kaart {
 
     @Override
     public String toString() {
-        return "Kaart{" +
-                "mast='" + mast + '\'' +
-                ", number='" + number + '\'' +
-                '}';
+        return  mast + " " + number;
     }
 
     public Kaart(String mast, String number) {  //Konstruktor
@@ -34,3 +31,4 @@ public class Kaart {
         this.number = number;
     }
 }
+

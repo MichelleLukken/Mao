@@ -47,4 +47,9 @@ public class Vastane extends Käsi{  //Vastane on klassi Käsi alamklass.
     public String toString() {
         return "Vastase kaardid: " + vastases;
     }
+
+    public ArrayList<Kaart> getVastases() {
+        return vastases;
+    }
 }
+

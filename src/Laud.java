@@ -4,6 +4,12 @@ public class Laud {
     private Kaart viimaneKaart;  //Kaart, mis viimana lauale käidi.
     private ArrayList<Kaart> kaardidLaual = new ArrayList<>(); //Kaardid, mis on mõlema mängija poolt ära käidud.
 
+    public Laud(Kaart viimaneKaart, ArrayList<Kaart> kaardidLaual) {
+        this.viimaneKaart = viimaneKaart;
+        this.kaardidLaual = kaardidLaual;
+    }
+    public Laud(){}
+
     public void setViimaneKaart(Kaart viimaneKaart) {
         this.viimaneKaart = viimaneKaart;
     }
