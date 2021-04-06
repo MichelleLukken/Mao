@@ -1,9 +1,3 @@
-/** MIDA TÄNA VEEL VAJA TEHA
- * Panna tingimus, millal mäng ära lõppeb.
- * Vahepeal peab kaardid ära käidud kaartide hulgast kaardipakki tõstma.
- * Tegema nii, et kasutaja peab uuesti sisestama kaardi, kui ta valesti käis???
- * Selgitavad tekstid kasutajale
- * */
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,7 +7,7 @@ public class Main {
         Kaardipakk kaartidePakk = new Kaardipakk();  //Loome kaardipaki.
         Laud laud = new Laud(); //Loome laua
         Käsi käsi = new Käsi(); //Loome käe/kasutaja
-        Vastane vastane = new Vastane();  //Loome vastase
+        Käsi vastane = new Käsi();  //Loome vastase
         Scanner käekäik = new Scanner(System.in);  //Kasutame scannerit kasutajaga suhtlemiseks.
 
         System.out.println("Tere tulemast mängima kaardimängu Mao.");
@@ -29,11 +23,13 @@ public class Main {
         kaartidePakk.mänguAlustamine(käsi, vastane, kaartidePakk, laud); //Jagame kaardi mängijate vahel ära.
 
         int i = 0;
-        while (käsi.getKäes().size() > 0 && vastane.getVastases().size() > 0) {   //Mäng kestab kuni ühel mängijal saavad kaardid otsa.
+        while (käsi.getKäes().size() > 0 && vastane.getKäes().size() > 0) {   //Mäng kestab kuni ühel mängijal saavad kaardid otsa.
             Kaart laual = laud.getViimaneKaart();
             ArrayList<Kaart> kaardidKäes = käsi.getKäes();
+            ArrayList<Kaart> kaardidKäes2 = vastane.getKäes();
             System.out.println("Laual on " + laual);
             System.out.println("Sinu kaardid: " + kaardidKäes);
+            System.out.println("Vastane" + kaardidKäes2);
 
             System.out.println("Sisesta käik: ");
             boolean tõene = true;
@@ -72,7 +68,7 @@ public class Main {
 
             System.out.println(" ");
             vastane.vastaseKäik(kaartidePakk, laud); //Vastane teeb oma käigu.
-            if (vastane.getVastases().size() == 1) {
+            if (käsi.getKäes().size() == 1) {
                 System.out.println("Ettevaatust, vastasel on ainult 1 kaart!");
             }
             if (kaartidePakk.getPakk().size() < 3) {   // Kui pakk, millest kaarte võetakse, jääb liiga väikeseks, lisatakse sellele kaardid, mis on juba maha läinud.

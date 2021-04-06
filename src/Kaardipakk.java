@@ -36,7 +36,7 @@ public class Kaardipakk {
     }
 
     //Jagab mängijatele 5 kaarti ja paneb lauale ühe kaardi.
-    public void mänguAlustamine(Käsi käsi, Vastane vastane, Kaardipakk kaardipakk, Laud laud){
+    public void mänguAlustamine(Käsi käsi, Käsi vastane, Kaardipakk kaardipakk, Laud laud){
         for (int i = 0, j = 51; i < 5; i++, j--) {
             käsi.võtaKaart(kaardipakk); //Käele 5 suvalist kaarti.
             vastane.võtaKaart(kaardipakk); //Vastasele 5 suvalist kaarti.
