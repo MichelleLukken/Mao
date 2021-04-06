@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -36,12 +37,16 @@ public class Main {
                 System.out.println("Sisesta käik: ");
                 String käik = käekäik.nextLine();  //Küsime kasutajalt, mida ta tahab järgmisena teha.
 
-                //Mao reegli kontrollimine
+                if(käik.toLowerCase().replace(" ", "").contains("mao")){
+                    System.out.println("Meie kõikvõimase valitseja nime suhu võtmise eest 5 kaarti!");
+                    for (int j = 0; j < 5; j++) {
+                        käsi.võtaKaart(kaartidePakk);
+                    }
+                    System.out.println("Sinu kaardid: " + kaardidKäes);
+                }
 
-                if (käik.contains("võta")) {
-                    käsi.võtaKaart(kaartidePakk);  //Kui kasutajal sobivat kaarti ei ole, siis ta võtab kaardi.
-                    tõene = false;
-                } else if (käik.contains("ärtu") || käik.contains("ruutu") || käik.contains("risti") || käik.contains("poti")) {  //Kasutaja tahab kaarti käia.
+                if (käik.contains("ärtu") || käik.contains("ruutu") || käik.contains("risti") || käik.contains("poti")) {  //Kasutaja tahab kaarti käia.
+                    System.out.println("Jõuan siia");
                     String[] osadeks = käik.split(" ");
                     String mast = osadeks[0];
                     String number = osadeks[1];
@@ -66,6 +71,9 @@ public class Main {
                         System.out.println("Sul ei ole sellist kaarti!");
                     }
 
+                } else if (käik.contains("võta")) {
+                    käsi.võtaKaart(kaartidePakk);  //Kui kasutajal sobivat kaarti ei ole, siis ta võtab kaardi.
+                    tõene = false;
 
                 } else {
                     System.out.println("Rääkimine vaba tahe.");
