@@ -27,6 +27,10 @@ public class Käsi {
                 if(!käes.get(i).getNumber().equals("äss")){
                     tõene = true;
                 }
+                String number = käes.get(i).getNumber();
+                if (number.equals("emand") || number.equals("10") ||number.equals("kuningas")){
+                    System.out.println(number + " olgu õnnistatud!");
+                }
                 käiKaart(laud, käes.get(i)); //Käib kaardi lauale
                 return tõene;
             }
@@ -36,7 +40,6 @@ public class Käsi {
         return true;
 
     }
-
 
 
     public Käsi(ArrayList<Kaart> käes) {
