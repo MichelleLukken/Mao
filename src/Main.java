@@ -38,8 +38,19 @@ public class Main {
                 String käik = käekäik.nextLine();  //Küsime kasutajalt, mida ta tahab järgmisena teha.
 
                 if(käik.toLowerCase().replace(" ", "").contains("mao")){
+                    if(käsi.getKäes().size() == 1){
+                        continue;
+                    }
                     System.out.println("Meie kõikvõimase valitseja nime suhu võtmise eest 5 kaarti!");
                     for (int j = 0; j < 5; j++) {
+                        käsi.võtaKaart(kaartidePakk);
+                    }
+                    System.out.println("Sinu kaardid: " + kaardidKäes);
+                }
+
+                if(käsi.getKäes().size() == 1 && !käik.toLowerCase().replace(" ", "").contains("mao")){
+                    System.out.println("Ei nimetanud meie kõikvõimsa valitseja nime!");
+                    for (int j = 0; j < 2; j++) {
                         käsi.võtaKaart(kaartidePakk);
                     }
                     System.out.println("Sinu kaardid: " + kaardidKäes);
