@@ -18,22 +18,25 @@ public class Käsi {
         }
     }
 
-    public void vastaseKäik (Kaardipakk kaardipakk, Laud laud){
-        Kaart viimane = laud.getViimaneKaart(); //Viimane lauale käidud kaart.
 
+    public boolean  vastaseKäik (Kaardipakk kaardipakk, Laud laud, boolean tõene){
+        Kaart viimane = laud.getViimaneKaart(); //Viimane lauale käidud kaart.
         //Kui vastasel on käes kaart, millel on sama mast või number kui laual oleval kaardil, siis ta käib selle laual.
-        boolean poolean= false;
         for (int i = 0; i < käes.size(); i++) {
             if (viimane.getMast().equals(käes.get(i).getMast()) || viimane.getNumber().equals(käes.get(i).getNumber())){
+                if(!käes.get(i).getNumber().equals("äss")){
+                    tõene = true;
+                }
                 käiKaart(laud, käes.get(i)); //Käib kaardi lauale
-                poolean = true;
-                break;
+                return tõene;
             }
         }
-        if(!poolean){ //Kui tal sellist kaarti ei ole, siis ta võtab endale kaardi.
-            võtaKaart(kaardipakk);
-        }
+
+        võtaKaart(kaardipakk);
+        return true;
+
     }
+
 
 
     public Käsi(ArrayList<Kaart> käes) {
