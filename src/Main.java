@@ -38,26 +38,16 @@ public class Main {
                 String käik = käekäik.nextLine();  //Küsime kasutajalt, mida ta tahab järgmisena teha.
 
                 if(käik.toLowerCase().replace(" ", "").contains("mao")){
-                    if(käsi.getKäes().size() == 1){
-                        continue;
+                    if(käsi.getKäes().size() != 1){
+                        System.out.println("Meie kõikvõimase valitseja nime suhu võtmise eest 5 kaarti!");
+                        for (int j = 0; j < 5; j++) {
+                            käsi.võtaKaart(kaartidePakk);
+                        }
+                        System.out.println("Sinu kaardid: " + kaardidKäes);
                     }
-                    System.out.println("Meie kõikvõimase valitseja nime suhu võtmise eest 5 kaarti!");
-                    for (int j = 0; j < 5; j++) {
-                        käsi.võtaKaart(kaartidePakk);
-                    }
-                    System.out.println("Sinu kaardid: " + kaardidKäes);
-                }
-
-                if(käsi.getKäes().size() == 1 && !käik.toLowerCase().replace(" ", "").contains("mao")){
-                    System.out.println("Ei nimetanud meie kõikvõimsa valitseja nime!");
-                    for (int j = 0; j < 2; j++) {
-                        käsi.võtaKaart(kaartidePakk);
-                    }
-                    System.out.println("Sinu kaardid: " + kaardidKäes);
                 }
 
                 if (käik.contains("ärtu") || käik.contains("ruutu") || käik.contains("risti") || käik.contains("poti")) {  //Kasutaja tahab kaarti käia.
-                    System.out.println("Jõuan siia");
                     String[] osadeks = käik.split(" ");
                     String mast = osadeks[0];
                     String number = osadeks[1];
@@ -68,13 +58,30 @@ public class Main {
                         Kaart elem = kaardidKäes.get(j);
                         if (elem.getMast().equals(mast) && elem.getNumber().equals(number)) {
 
-                            //Siia lisareeglid
+                            if(käsi.getKäes().size() == 1 && !käik.toLowerCase().replace(" ", "").contains("mao")){
+                                System.out.println("Ei nimetanud meie kõikvõimsa valitseja nime!");
+                                for (int k = 0; k < 2; k++) {
+                                    käsi.võtaKaart(kaartidePakk);
+                                }
+                                System.out.println("Sinu kaardid: " + kaardidKäes);
+                            }
 
                             käsi.käiKaart(laud, elem); //Kui tal on selline kaart, siis käiakse see lauale.
                             System.out.println("Sina käisid: " + elem);
                             õigeKaart = true;
                             if (!number.equals("äss")) {
                                 tõene = false;
+                            }
+                            if (käsi.getKäes().size()==0) {
+                                tõene = false;
+                            }
+                            if (number.equals("emand") || number.equals("10") || number.equals("kuningas")) {
+                                if (käik.contains("nnista")) {
+                                    continue;
+                                } else {
+                                    System.out.println("Ei öelnud '" + number + " olgu õnnistatud', saad kaardi juurde!");
+                                    käsi.võtaKaart(kaartidePakk);
+                                }
                             }
                         }
                     }
@@ -111,7 +118,12 @@ public class Main {
         if (käsi.getKäes().size() == 0) {
             System.out.println("Sa oled võitja!");
         } else {
+            System.out.println("Mao");
             System.out.println("Kahjuks võitis vastane, aga hea mäng!");
         }
     }
 }
+
+
+// Vastase kaardipaki asemel väljastame kaartide arvu.
+// Kui võidad, näitab, et on 1 kaart vastasel!
