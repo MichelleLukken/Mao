@@ -23,6 +23,7 @@ public class Main {
         kaartidePakk.mänguAlustamine(käsi, vastane, kaartidePakk, laud); //Jagame kaardi mängijate vahel ära.
 
         int i = 0;
+        boolean tõene = true;
         while (käsi.getKäes().size() > 0 && vastane.getKäes().size() > 0) {   //Mäng kestab kuni ühel mängijal saavad kaardid otsa.
             Kaart laual = laud.getViimaneKaart();
             ArrayList<Kaart> kaardidKäes = käsi.getKäes();
@@ -31,35 +32,40 @@ public class Main {
             System.out.println("Sinu kaardid: " + kaardidKäes);
             System.out.println("Vastane" + kaardidKäes2);
 
-            System.out.println("Sisesta käik: ");
-            boolean tõene = true;
             while (tõene) {
+                System.out.println("Sisesta käik: ");
                 String käik = käekäik.nextLine();  //Küsime kasutajalt, mida ta tahab järgmisena teha.
+
+                //Mao reegli kontrollimine
+
                 if (käik.contains("võta")) {
                     käsi.võtaKaart(kaartidePakk);  //Kui kasutajal sobivat kaarti ei ole, siis ta võtab kaardi.
                     tõene = false;
-                } else if (käik.contains("käi")) {  //Kasutaja tahab kaarti käia.
+                } else if (käik.contains("ärtu") || käik.contains("ruutu") || käik.contains("risti") || käik.contains("poti")) {  //Kasutaja tahab kaarti käia.
                     String[] osadeks = käik.split(" ");
-                    if (osadeks.length == 3) {
-                        String mast = osadeks[1];
-                        String number = osadeks[2];
+                    String mast = osadeks[0];
+                    String number = osadeks[1];
 
-                        boolean õigeKaart = false;
-                        for (int j = 0; j < kaardidKäes.size(); j++) { //Kontrollitakse, kas kasutajal on seda kaarti, mida ta tahab käia.
-                            Kaart elem = kaardidKäes.get(j);
-                            if (elem.getMast().equals(mast) && elem.getNumber().equals(number)) {
-                                käsi.käiKaart(laud, elem); //Kui tal on selline kaart, siis käiakse see lauale.
-                                System.out.println("Sina käisid: " + elem);
-                                õigeKaart = true;
+
+                    boolean õigeKaart = false;
+                    for (int j = 0; j < kaardidKäes.size(); j++) { //Kontrollitakse, kas kasutajal on seda kaarti, mida ta tahab käia.
+                        Kaart elem = kaardidKäes.get(j);
+                        if (elem.getMast().equals(mast) && elem.getNumber().equals(number)) {
+
+                            //Siia lisareeglid
+
+                            käsi.käiKaart(laud, elem); //Kui tal on selline kaart, siis käiakse see lauale.
+                            System.out.println("Sina käisid: " + elem);
+                            õigeKaart = true;
+                            if (!number.equals("äss")) {
                                 tõene = false;
                             }
                         }
-                        if (!õigeKaart) { //Kui tal ei ole sellist kaarti, siis peab uuesti käsu sisestama.
-                            System.out.println("Sul ei ole sellist kaarti!");
-                        }
-                    } else {
+                    }
+                    if (!õigeKaart) { //Kui tal ei ole sellist kaarti, siis peab uuesti käsu sisestama.
                         System.out.println("Sul ei ole sellist kaarti!");
                     }
+
 
                 } else {
                     System.out.println("Rääkimine vaba tahe.");
@@ -67,8 +73,10 @@ public class Main {
             }
 
             System.out.println(" ");
-            vastane.vastaseKäik(kaartidePakk, laud); //Vastane teeb oma käigu.
-            if (käsi.getKäes().size() == 1) {
+            if (!tõene){
+                tõene = vastane.vastaseKäik(kaartidePakk, laud, tõene); //Vastane teeb oma käigu.
+            }
+            if (vastane.getKäes().size() == 1) {
                 System.out.println("Ettevaatust, vastasel on ainult 1 kaart!");
             }
             if (kaartidePakk.getPakk().size() < 3) {   // Kui pakk, millest kaarte võetakse, jääb liiga väikeseks, lisatakse sellele kaardid, mis on juba maha läinud.
