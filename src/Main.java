@@ -72,7 +72,12 @@ public class Main {
                             }
                             if(laud.getViimaneKaart().getNumber().equals("7")){
                                 if (!(pakiSuurus == 0 || pakiSuurus > Kaardipakk.getPakk().size())) {
-                                    if (!number.equals("7")) { //kui 7 peale käiakse midagi muud (enne kui keegi pole kaarti võtnud) tuleb range karistus
+                                    if (käik.toLowerCase().contains("aitäh")){
+                                        System.out.println("Teisi tänades ei saa kaati käia. +1 kaart");
+                                        pakiSuurus = 0; //edaspidi saab normaalselt käike teha
+                                        eiKäi = true; //kaarti käia ei saa
+                                    }
+                                    else if(!number.equals("7")) { //kui 7 peale käiakse midagi muud (enne kui keegi pole kaarti võtnud) tuleb range karistus
                                         System.out.println("Vale käik. Ei öelnud aitäh. (+1kaart) Ei võtnud kaarti. (+1kaart) Kaart mille pidid võtma. (+1kaart)");
                                         for (int k = 0; k < 3; k++) { //saab 3 kaarti juurde
                                             käsi.võtaKaart(kaartidePakk);
@@ -98,7 +103,7 @@ public class Main {
                             }
                             if(!eiKäi){ //filter mis ei lase läbi kui üritatakse 7 peale midagi mittesobivat käia
                                 käsi.käiKaart(laud, elem); //Kui tal on selline kaart, siis käiakse see lauale.
-                                //System.out.println("Sina käisid: " + elem);
+                                System.out.println("Sina käisid: " + elem);//System.out.println("Sina käisid: " + elem);
 
                             }
                             eiKäi = false;
