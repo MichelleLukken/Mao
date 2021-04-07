@@ -11,7 +11,6 @@ public class Käsi {
     }
     public void käiKaart(Laud laud, Kaart a){
         if (laud.saabKäia(a) == 1){
-            System.out.println("Sina käisid: " + a);
             this.käes.remove(a); //Kui saab kaarti käia, siis eemaldatakse see kaart käest.
         }
         else if (laud.saabKäia(a) == 0){
