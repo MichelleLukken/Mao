@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Kaardipakk {
-    private ArrayList<Kaart> pakk = new ArrayList<>();  //Massiiv, kuhu hakkame koguma kõiki kaarte.
+    private static ArrayList<Kaart> pakk = new ArrayList<>();  //Massiiv, kuhu hakkame koguma kõiki kaarte.
 
 
     public Kaardipakk() {
@@ -20,7 +20,7 @@ public class Kaardipakk {
         }
     }
 
-    public ArrayList<Kaart> getPakk() {
+    public static ArrayList<Kaart> getPakk() {
         return pakk;
     }
 
